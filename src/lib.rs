@@ -48,3 +48,25 @@ impl<T: ToTokens> ToPretty for T {
         prettyplease::unparse(&file)
     }
 }
+
+/// Like [`ToPretty`] but prints to the console instead.
+pub trait PrettyPrint {
+    /// Like [`ToPretty::to_pretty`] but prints to the console instead.
+    fn pretty_print(&self);
+}
+
+impl<T: ToTokens> PrettyPrint for T {
+    fn pretty_print(&self) {
+        let tokens: TokenStream2 = self.to_token_stream();
+        let file = syn::parse_file(&tokens.to_string()).unwrap();
+        println!("{}", prettyplease::unparse(&file));
+    }
+}
+
+#[test]
+fn test_pretty_print() {
+    quote::quote!(
+        type Blah = usize;
+    )
+    .pretty_print();
+}
