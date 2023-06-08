@@ -26,3 +26,27 @@ pub fn suppress_item(attr: TokenStream, _tokens: TokenStream) -> TokenStream {
     parse_macro_input!(attr as Nothing);
     TokenStream::new()
 }
+
+/// Similar to [`macro@suppress_item`], but will instead entirely replace the item this
+/// attribute is attached to with whatever item is specified in the attribute arguments.
+///
+/// ## Example
+///
+/// The following test will pass because `invalid_rust()` is not emitted and is instead
+/// replaced with `hello_world()`, which can then be referred to on subsequent lines:
+///
+/// ```ignore
+/// #[overwrite_with {
+///     fn hello_world() -> usize {
+///         return 3;
+///     }
+/// }]
+/// fn invalid_rust() {
+///     return nonexistent_value;
+/// }
+/// assert_eq!(hello_world(), 3);
+/// ```
+#[proc_macro_attribute]
+pub fn overwrite_with(attr: TokenStream, _tokens: TokenStream) -> TokenStream {
+    attr
+}
