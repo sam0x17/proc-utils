@@ -8,6 +8,7 @@ edition = "2021"
 authors = ["sam0x17"]
 description = "A series of traits, macros, functions, and utilities that make writing and debugging proc macros easier"
 keywords = ["proc-macro", "macro", "syn", "debugging"]
+repository = "https://github.com/sam0x17/proc-utils"
 license = "MIT"
 
 [dependencies]
