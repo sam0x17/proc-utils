@@ -1,3 +1,6 @@
+//! This crate provides a series of traits, macros, functions, and utilities that make writing
+//! and debugging proc macros easier
+
 pub use proc_macro2::TokenStream as TokenStream2;
 pub use proc_util_macros::*;
 use quote::ToTokens;
