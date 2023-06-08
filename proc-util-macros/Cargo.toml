@@ -1,0 +1,12 @@
+[package]
+name = "proc-util-macros"
+version = "0.1.0"
+edition = "2021"
+authors = ["sam0x17"]
+description = "Support macros for `proc-utils`"
+license = "MIT"
+
+[lib]
+proc-macro = true
+
+[dependencies]

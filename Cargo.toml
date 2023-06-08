@@ -1,3 +1,6 @@
+[workspace]
+members = ["proc-util-macros"]
+
 [package]
 name = "proc-utils"
 version = "0.1.0"
@@ -5,5 +8,7 @@ edition = "2021"
 authors = ["sam0x17"]
 description = "A series of traits, macros, functions, and utilities that make writing and debugging proc macros easier"
 keywords = ["proc-macro", "macro", "syn", "debugging"]
+license = "MIT"
 
 [dependencies]
+proc-util-macros = { path = "proc-util-macros", version = "0.1.0" }
